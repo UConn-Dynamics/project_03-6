@@ -251,12 +251,6 @@ begin
         labels=["λ₁: slider y" "λ₂: block θ" "λ₃: pin x" "λ₄: pin y"])
 end
 
-# ╔═╡ c2222222-2222-4222-8222-222222222222
-begin
-    C_error = [norm(C(q_sol[i, :], tN[i])) for i in eachindex(tN)]
-    plot(tN, C_error, xlabel="Time (s)", ylabel="||C(q,t)||", title="Constraint drift check", label="constraint error")
-end
-
 # ╔═╡ c3333333-3333-4333-8333-333333333333
 md"""## 8) Animation helper
 
@@ -299,18 +293,6 @@ begin
         scatter!([q_sol[i,1]], [q_sol[i,2]], label="pin")
     end
 end
-
-# ╔═╡ c6666666-6666-4666-8666-666666666666
-md"""## Wrapping up
-
-This notebook changes `project_03_group6_NPv1` from a prompt-only file into a working constrained multibody simulation. The structure follows the piston-crank notebook style, but the solve step is dynamic instead of purely kinematic:
-
-1. define absolute coordinates $q$
-2. define constraints $C(q,t)$ and $C_q$
-3. assemble the augmented Newton-Euler / D'Alembert system
-4. solve for $\ddot q$ and $\lambda$ at every time step
-5. integrate the motion and plot the displacement, velocity, acceleration, and constraint multipliers
-"""
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
